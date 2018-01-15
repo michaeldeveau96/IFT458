@@ -1,9 +1,5 @@
 body {
-<<<<<<< HEAD
 	background-color: #D9D9D9;
-=======
- background-color: #E5E5E5;
->>>>>>> refs/remotes/origin/master
 	padding:0;
 	height: auto;
 	min-height: 100%;
@@ -12,11 +8,7 @@ body {
 	font-size:bold;
 }
 #main {
-<<<<<<< HEAD
 	background-color: #D9D9D9;
-=======
-	background-color: #E5E5E5;
->>>>>>> refs/remotes/origin/master
 	padding:0;
 	margin: 0;
 	height: auto;
@@ -33,11 +25,11 @@ body {
 	position:center;
 }
 #header {
-<<<<<<< HEAD
+
 	background-color: #D9D9D9;
 }
 #page {
-	background-color: #D9D9D9;
+	background-color: white;
 }
 #logo {
 	float:left;
@@ -63,9 +55,6 @@ body {
 }
 #menuBar{
 	background-color: #D9D9D9;
-=======
-	background-color: #E5E5E5;
->>>>>>> refs/remotes/origin/master
 }
 .topmenu {
 	list-style-type: none;
@@ -76,18 +65,13 @@ body {
 	max-width: 100%;
 	margin-top: 10px;
 	margin-bottom: 0;
-<<<<<<< HEAD
 	text-align: left;
 }
 .topmenu li {
 	float:left;
-=======
-
 }
 .topmenu li {
 	float:left;
-	border-right: 1px solid #434343;
->>>>>>> refs/remotes/origin/master
 }
 .topmenu li a {
 	display: inline-block;
@@ -95,11 +79,7 @@ body {
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
-<<<<<<< HEAD
 	font-size: 16px;
-=======
-	font-size: 14px;
->>>>>>> refs/remotes/origin/master
 }
 .topmenu li a:hover {
 	background-color: #111;
@@ -114,7 +94,6 @@ body {
 	font-family: Arial;
 	font-size: 14px;
 }
-<<<<<<< HEAD
 #subHeader {
 	background-color: #D9D9D9;
 }
@@ -142,22 +121,16 @@ body {
 }
 #sidebar_left {
 	width:20%;
-=======
+}
 #sidebar_left {
-	
 	width:33%;
->>>>>>> refs/remotes/origin/master
 	overflow:hidden;
 	background-color: white;
 	font-family: Arial;
 }
 #sidebar_left-container {
-<<<<<<< HEAD
 	float:left;
-	width:100%;	
-=======
-	width:50%;	
->>>>>>> refs/remotes/origin/master
+	width:55%;	
 }
 .dropdown {
 	float: none;
@@ -196,6 +169,8 @@ body {
 	text-decoration: none;
 	display: block;
 	text-align: left;
+	width: 200px;
+	font-size: 12px;
 }
 .dropdown-content a:hover {
 	background-color: #111;
@@ -208,11 +183,8 @@ body {
 		width: 100%;
 		height: auto;
 	}
-<<<<<<< HEAD
 }
 #contents {
 	width: 33%;
 	background-color: black;
-=======
->>>>>>> refs/remotes/origin/master
 }
