@@ -9,154 +9,152 @@
 	<script type="text/javascript" src="PD1.js"></script>
 </head>
 <body>
-<div id="main">
+<div class="main">
 	<div id="header">
-		<input id ="searchBar" type="text" name="searchbar" placeholder="Search...">
-		<div id="SocialMediaLinks">
-			<a id="facebook" href="https://www.facebook.com"><i class="fa fa-facebook-square"></i></a>
-			<a id="twitter" href="https://www.twitter.com"><i class="fa fa-twitter-square"></i></a>
+		<div id="headerBar">
+			<input type="text" placeholder="Search..." id="searchBar">
+			<a href="https://www.facebook.com" id="facebook"><i class="fa fa-facebook-square"></i></a>
+			<a href="https://www.facebook.com" id="twitter"><i class="fa fa-twitter-square"></i></a>
 		</div>
-	</div>
-	
-	<div id="page">
-		<div id="content">
-			oijfowaiejfoawiefj
-		</div>
-		<footer>
-			SolarPV
-		</footer>
-	</div>
-	<div class="sidenav">
-		<button class="navbtn">
-			<span onclick="openNav()">&#9776;</span>
-		</button>
-	</div>
-	<div id="sidebar_left">
-		<div id="sidebar_left-container">
-			<div class="dropdown">
-				<button class="closebtn" id="closebtn">
-					<div id="closebtn-container" onclick="closeNav()">
-						<span>&#10006</span>
-					</div>
-				</button>
-			</div>
-			<div class="dropdown">
-				<a href="PD1.html"><button class="dropbtn">Home</button></a>
-			</div>
-			<div class="dropdown">
-				<button class="dropbtn">PV Module
-					<i class="fa fa-caret-right"></i>
-				</button>
-				<div class="dropdown-content-container">
-					<div class="dropdown-content">
-						<a href="#Testing_&_Certification">Testing & Certification</a>
-						<a href="#PV_Rating">PV Rating</a>
-					</div>
-				</div>
-			</div>
-			<div class="dropdown">
-				<button class="dropbtn">PV System Performance
-					<i class="fa fa-caret-right"></i>
-				</button>
-				<div class="dropdown-content-container">
-					<div class="dropdown-content">
-						<a href="#Performance_Analysis">Performance Analysis</a>
-						<a href="#Compare_System">Compare System</a>
-						<a href="#Certification">Certification</a>
-					</div>
-				</div>
-			</div>
-			<div class="dropdown">
-				<button class="dropbtn">Solar Data Analytics
-					<i class="fa fa-caret-right"></i>
-				</button>
-				<div class="dropdown-content-container">
-					<div class="dropdown-content">
-						<a href="#Module_Lifetime_Prediction">Module Lifetime Prediction</a>
-						<a href="#Energy_Prediction">Energy Prediction</a>
-					</div>
-				</div>
-			</div>
-			<div class="dropdown">
-				<button class="dropbtn">Smart Grid Technologies
-					<i class="fa fa-caret-right"></i>
-				</button>
-				<div class="dropdown-content-container">
-					<div class="dropdown-content">
-						<a href="#Grid_Modernization_and_the_Smart_Grid">Grid Modernization and the Smart Grid</a>
-						<a href="#Building_and_Testing_the_Smart_Grid">Building and Testing the Smart Grid</a>
-					</div>
-				</div>
-			</div>
-			<div class="dropdown">
-				<button class="dropbtn">Solar PV University
-					<i class="fa fa-caret-right"></i>
-				</button>
-				<div class="dropdown-content-container">
-					<div class="dropdown-content">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!--
-		<div id="titleBlock">
-			<div id="logo">
-				<b>solarPV</b><br>
-				<b>Research & Development</b>
-			</div>
-			<div id="SocialMediaLinks">
-				<a id="facebook" href="https://www.facebook.com"><i class="fa fa-facebook-square"></i></a>
-				<a id="twitter" href="https://www.twitter.com"><i class="fa fa-twitter-square"></i></a>
-		<!--<div id="menuBar">
-			<ul class="topmenu" id="myTopmenu">
-				<li><a href="PD1.html">Home</a></li>
-				<li><a href="#PV_Module">PV Module</a></li>
-				<li><a href="#PV_Systems_Performance">PV Systems Performance</a></li>
-				<li><a href="#Solar_Data_Analytics">Solar Data Analytics</a></li>
-				<li><a href="#Smart_Grid_Technologies">Smart Grid Technologies</a></li>
-				<div class="searchBar">
-				<div =class="searchBar">
-					<input id ="searchBar" type="text" name="searchbar" placeholder="Search...">
-				</div>
-			</ul>
-		</div>
-	</div>
-	<div id="page">
-		<div id="subHeader">
+		<div id="logo">
+			<i id="solarpv">SolarPV</i><a id="phrase">Research & Development</a>
 			<div id="registration">
-				<ul class="registerList">
-					<button id="register">Register</button>
-					<i id="break">|</i>
-					<button id="login">Log In</button>
-				</ul>
+				<button class="register" onclick="openRegister()">Register</button>
+				<button class="login" onclick="openLogin()">Log In</button>
 			</div>
-			<div id="featureContents">
-			</div>
-			<div id="newsEvents">
-			</div>
-		</div>
-		<div id="contents">
-			heifjaeoijf
 		</div>
 	</div>
-</div>-->
+	<div id="loginForm" class="loginModal">
+		<form class="modal-content animate" action="/action_page.php">
+			<div class="closecontainer">
+				<span onclick="closeLogin()" class="close" title="Close Form">&times;</span>
+			</div>
+			
+			<div class="container">
+				<label><b>Username</b></label>
+				<input type="text" placeholder="Enter Username" name="uname" required>
+				
+				<label><b>Password</b></label>
+				<input type="text" placeholder="Enter Password" name="psw" required>
+				
+				<button type="submit">Log In</button>
+				<label>
+					<input type="checkbox" checked="checked"> Remember me
+				</label>
+				<span class="psw">Forgot <a href="#">password?</a></span>
+			</div>
+			
+			<div class="container">
+				<button type="button" onclick="closeLogin()" class="cancel">Cancel</button>
+			</div>
+		</form>
+	</div>
+	<div id="registerForm" class="registerModal">
+		<form class="modal-content animate" action="/action_page.php">
+			<div class="closecontainer">
+				<span onclick="closeRegister()" class="close" title="Close Form">&times;</span>
+			</div>
+			<div class="container">
+				<form id="register">
+					<label><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" name="uname" required>
+					
+					<label><b>Password</b></label>
+					<input type="text" placeholder="Enter Password" name="psw" required>
+					
+					<label><b>First Name</b></label>
+					<input type="text" placeholder="First Name" name="fname">
+					
+					<label><b>Middle Name</b></label>
+					<input type="text" placeholder="Middle Name" name="mname">
+					
+					<label><b>Last Name</b></label>
+					<input type="text" placeholder="Lase Name" name="lname" required>
+					
+					<label><b>Gender</b></label><br>
+					<input type="radio" name="gender" value="male" checked> Male<br>
+					<input type="radio" name="gender" value="female"> Female<br>
+					<input type="radio" name="gender" value="other"> Other<br><br>
+					
+					<label><b>Address Line 1</b></label>
+					<input type="text" placeholder="Address Line 1" name="addr1" required>
+					
+					<label><b>Address Line 2</b></label>
+					<input type="text" placeholder="Address Line 2" name="addr2">
+					
+					<label><b>City</b></label>
+					<input type="text" placeholder="City" name="city" required>
+					
+					<label><b>State</b></label>
+					<select name="state" form="register" id="state" required>
+						<option value="Alabama">Alabama</option>
+						<option value="Alaska">Alaska</option>
+						<option value="Arizona">Arizona</option>
+						<option value="Arkansas">Arkansas</option>
+						<option value="California">California</option>
+						<option value="Colorado">Colorado</option>
+						<option value="Connecticut">Connecticut</option>
+						<option value="Delaware">Delaware</option>
+						<option value="Florida">Florida</option>
+						<option value="Georgia">Georgia</option>
+						<option value="Hawaii">Hawaii</option>
+						<option value="Idaho">Idaho</option>
+						<option value="Illinois">Illinois</option>
+						<option value="Iowa">Iowa</option>
+						<option value="Kansas">Kansas</option>
+						<option value="Kentucky">Kentucky</option>
+						<option value="Louisiana">Louisiana</option>
+						<option value="Maine">Maine</option>
+						<option value="Maryland">Maryland</option>
+						<option value="Massachusetts">Massachusetts</option>
+						<option value="Michigan">Michigan</option>
+						<option value="Minnesota">Minnesota</option>
+						<option value="Mississippi">Mississippi</option>
+						<option value="Missouri">Missouri</option>
+						<option value="Montana">Montana</option>
+						<option value="Nebraska">Nebraska</option>
+						<option value="Nevada">Nevada</option>
+						<option value="New Hampshire">New Hampshire</option>
+						<option value="New Jersey">New Jersey</option>
+						<option value="New Mexico">New Mexico</option>
+						<option value="New York">New York</option>
+						<option value="North Carolina">North Carolina</option>
+						<option value="North Dakota">North Dakota</option>
+						<option value="Ohio">Ohio</option>
+						<option value="Oklahoma">Oklahoma</option>
+						<option value="Oregon">Oregon</option>
+						<option value="Pennsylvania">Pennsylvania</option>
+						<option value="Rhode Island">Rhode Island</option>
+						<option value="South Carolina">South Carolina</option>
+						<option value="South Dakota">South Dakota</option>
+						<option value="Tennessee">Tennessee</option>
+						<option value="Texas">Texas</option>
+						<option value="Utah">Utah</option>
+						<option value="Vermont">Vermont</option>
+						<option value="Virginia">Virginia</option>
+						<option value="Washington">Washington</option>
+						<option value="West Virginia">West Virginia</option>
+						<option value="Wisconsin">Wisconsin</option>
+						<option value="Wyoming">Wyoming</option>
+					</select>
+					
+					<label><b>Zip Code</b></label>
+					<input id="Zip Code" type="text" placeholder="Zip Code" name="Zip Code" maxlength="5" required><br>
+					
+					<label><b>Email</b></label>
+					<input type="email" placeholder="Email" name="email" required>
+					
+					<label><b>Phone Number</b></label>
+					<input type="tel" placeholder="Phone Number" name="phonenumber" maxlength="9" required>
+					
+					<label><b>Company</b></label>
+					<input type="text" placeholder="Company" name="company" required>
+
+					<button type="submit">Submit</button>
+				</form>
+	<div class="sidebar">
+		
+	</div>
+</div>
 </body>
 </html>
