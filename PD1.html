@@ -19,8 +19,8 @@
 		<div id="logo">
 			<i id="solarpv">SolarPV</i><a id="phrase">Research & Development</a>
 			<div id="registration">
-				<button class="register" onclick="openRegister()">Register</button>
-				<button class="login" onclick="openLogin()">Log In</button>
+				<button id="register" onclick="openRegister()">Register</button>
+				<button id="login" onclick="openLogin()">Log In</button>
 			</div>
 		</div>
 	</div>
@@ -37,7 +37,7 @@
 				<label><b>Password</b></label>
 				<input type="text" placeholder="Enter Password" name="psw" required>
 				
-				<button type="submit">Log In</button>
+				<button type="submit" onclick="loggedIn()">Log In</button>
 				<label>
 					<input type="checkbox" checked="checked"> Remember me
 				</label>
@@ -55,105 +55,197 @@
 				<span onclick="closeRegister()" class="close" title="Close Form">&times;</span>
 			</div>
 			<div class="container">
-				<form id="register">
-					<label><b>Username</b></label>
-					<input type="text" placeholder="Enter Username" name="uname" required>
-					
-					<label><b>Password</b></label>
-					<input type="text" placeholder="Enter Password" name="psw" required>
-					
-					<label><b>First Name</b></label>
-					<input type="text" placeholder="First Name" name="fname">
-					
-					<label><b>Middle Name</b></label>
-					<input type="text" placeholder="Middle Name" name="mname">
-					
-					<label><b>Last Name</b></label>
-					<input type="text" placeholder="Lase Name" name="lname" required>
-					
-					<label><b>Gender</b></label><br>
-					<input type="radio" name="gender" value="male" checked> Male<br>
-					<input type="radio" name="gender" value="female"> Female<br>
-					<input type="radio" name="gender" value="other"> Other<br><br>
-					
-					<label><b>Address Line 1</b></label>
-					<input type="text" placeholder="Address Line 1" name="addr1" required>
-					
-					<label><b>Address Line 2</b></label>
-					<input type="text" placeholder="Address Line 2" name="addr2">
-					
-					<label><b>City</b></label>
-					<input type="text" placeholder="City" name="city" required>
-					
-					<label><b>State</b></label>
-					<select name="state" form="register" id="state" required>
-						<option value="Alabama">Alabama</option>
-						<option value="Alaska">Alaska</option>
-						<option value="Arizona">Arizona</option>
-						<option value="Arkansas">Arkansas</option>
-						<option value="California">California</option>
-						<option value="Colorado">Colorado</option>
-						<option value="Connecticut">Connecticut</option>
-						<option value="Delaware">Delaware</option>
-						<option value="Florida">Florida</option>
-						<option value="Georgia">Georgia</option>
-						<option value="Hawaii">Hawaii</option>
-						<option value="Idaho">Idaho</option>
-						<option value="Illinois">Illinois</option>
-						<option value="Iowa">Iowa</option>
-						<option value="Kansas">Kansas</option>
-						<option value="Kentucky">Kentucky</option>
-						<option value="Louisiana">Louisiana</option>
-						<option value="Maine">Maine</option>
-						<option value="Maryland">Maryland</option>
-						<option value="Massachusetts">Massachusetts</option>
-						<option value="Michigan">Michigan</option>
-						<option value="Minnesota">Minnesota</option>
-						<option value="Mississippi">Mississippi</option>
-						<option value="Missouri">Missouri</option>
-						<option value="Montana">Montana</option>
-						<option value="Nebraska">Nebraska</option>
-						<option value="Nevada">Nevada</option>
-						<option value="New Hampshire">New Hampshire</option>
-						<option value="New Jersey">New Jersey</option>
-						<option value="New Mexico">New Mexico</option>
-						<option value="New York">New York</option>
-						<option value="North Carolina">North Carolina</option>
-						<option value="North Dakota">North Dakota</option>
-						<option value="Ohio">Ohio</option>
-						<option value="Oklahoma">Oklahoma</option>
-						<option value="Oregon">Oregon</option>
-						<option value="Pennsylvania">Pennsylvania</option>
-						<option value="Rhode Island">Rhode Island</option>
-						<option value="South Carolina">South Carolina</option>
-						<option value="South Dakota">South Dakota</option>
-						<option value="Tennessee">Tennessee</option>
-						<option value="Texas">Texas</option>
-						<option value="Utah">Utah</option>
-						<option value="Vermont">Vermont</option>
-						<option value="Virginia">Virginia</option>
-						<option value="Washington">Washington</option>
-						<option value="West Virginia">West Virginia</option>
-						<option value="Wisconsin">Wisconsin</option>
-						<option value="Wyoming">Wyoming</option>
-					</select>
-					
-					<label><b>Zip Code</b></label>
-					<input id="Zip Code" type="text" placeholder="Zip Code" name="Zip Code" maxlength="5" required><br>
-					
-					<label><b>Email</b></label>
-					<input type="email" placeholder="Email" name="email" required>
-					
-					<label><b>Phone Number</b></label>
-					<input type="tel" placeholder="Phone Number" name="phonenumber" maxlength="9" required>
-					
-					<label><b>Company</b></label>
-					<input type="text" placeholder="Company" name="company" required>
+				<label><b>Username</b></label>
+				<input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+				
+				<label><b>Password</b></label>
+				<input type="text" placeholder="Enter Password" name="psw" id="pwd" required>
+				
+				<label><b>First Name</b></label>
+				<input type="text" placeholder="First Name" name="fname">
+				
+				<label><b>Middle Name</b></label>
+				<input type="text" placeholder="Middle Name" name="mname">
+				
+				<label><b>Last Name</b></label>
+				<input type="text" placeholder="Lase Name" name="lname" id="lname" required>
+				
+				<label><b>Gender</b></label><br>
+				<input type="radio" name="gender" value="male" checked> Male<br>
+				<input type="radio" name="gender" value="female"> Female<br>
+				<input type="radio" name="gender" value="other"> Other<br><br>
+				
+				<label><b>Address Line 1</b></label>
+				<input type="text" placeholder="Address Line 1" name="addr1" id="addr" required>
+				
+				<label><b>Address Line 2</b></label>
+				<input type="text" placeholder="Address Line 2" name="addr2">
+				
+				<label><b>City</b></label>
+				<input type="text" placeholder="City" name="city" id="city" required>
+				
+				<label><b>State</b></label>
+				<select name="state" form="register" id="state" required>
+					<option value="Alabama">Alabama</option>
+					<option value="Alaska">Alaska</option>
+					<option value="Arizona">Arizona</option>
+					<option value="Arkansas">Arkansas</option>
+					<option value="California">California</option>
+					<option value="Colorado">Colorado</option>
+					<option value="Connecticut">Connecticut</option>
+					<option value="Delaware">Delaware</option>
+					<option value="Florida">Florida</option>
+					<option value="Georgia">Georgia</option>
+					<option value="Hawaii">Hawaii</option>
+					<option value="Idaho">Idaho</option>
+					<option value="Illinois">Illinois</option>
+					<option value="Iowa">Iowa</option>
+					<option value="Kansas">Kansas</option>
+					<option value="Kentucky">Kentucky</option>
+					<option value="Louisiana">Louisiana</option>
+					<option value="Maine">Maine</option>
+					<option value="Maryland">Maryland</option>
+					<option value="Massachusetts">Massachusetts</option>
+					<option value="Michigan">Michigan</option>
+					<option value="Minnesota">Minnesota</option>
+					<option value="Mississippi">Mississippi</option>
+					<option value="Missouri">Missouri</option>
+					<option value="Montana">Montana</option>
+					<option value="Nebraska">Nebraska</option>
+					<option value="Nevada">Nevada</option>
+					<option value="New Hampshire">New Hampshire</option>
+					<option value="New Jersey">New Jersey</option>
+					<option value="New Mexico">New Mexico</option>
+					<option value="New York">New York</option>
+					<option value="North Carolina">North Carolina</option>
+					<option value="North Dakota">North Dakota</option>
+					<option value="Ohio">Ohio</option>
+					<option value="Oklahoma">Oklahoma</option>
+					<option value="Oregon">Oregon</option>
+					<option value="Pennsylvania">Pennsylvania</option>
+					<option value="Rhode Island">Rhode Island</option>
+					<option value="South Carolina">South Carolina</option>
+					<option value="South Dakota">South Dakota</option>
+					<option value="Tennessee">Tennessee</option>
+					<option value="Texas">Texas</option>
+					<option value="Utah">Utah</option>
+					<option value="Vermont">Vermont</option>
+					<option value="Virginia">Virginia</option>
+					<option value="Washington">Washington</option>
+					<option value="West Virginia">West Virginia</option>
+					<option value="Wisconsin">Wisconsin</option>
+					<option value="Wyoming">Wyoming</option>
+				</select>
+				
+				<label><b>Zip Code</b></label>
+				<input id="zip_code" type="text" placeholder="Zip Code" name="Zip Code" maxlength="5" required><br>
+				
+				<label><b>Email</b></label>
+				<input type="email" placeholder="Email" name="email" id="email" required>
+				
+				<label><b>Phone Number</b></label>
+				<input type="tel" placeholder="Phone Number" name="phonenumber" maxlength="9" id="pnum" required>
+				
+				<label><b>Company</b></label>
+				<input type="text" placeholder="Company" name="company" id="comp" required>
 
-					<button type="submit">Submit</button>
-				</form>
-	<div class="sidebar">
-		
+				<button type="submit" onclick="loggedIn()">Submit</button>
+			</div>
+		</form>
+	</div>
+	<div class='main-container'>
+		<div class="sidebar">
+			<div class="dropdown">
+				<button class="dropdownbtn" onclick="reload()" style="cursor:pointer">Home
+				</button>
+			</div>
+			<div class="dropdown">
+				<button class="dropdownbtn">PV Module
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="ddcontent">
+					<a href="#Testing_&_Certification" class="dropdownbtn">Testing & Certification</a>
+					<a href="#PV_Rating" class="dropdownbtn">PV Rating</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<button class="dropdownbtn">PV System Performance
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="ddcontent">
+					<a href="#Performance_Analysis" class="dropdownbtn">Performance Analysis</a>
+					<a href="#Compare_System" class="dropdownbtn">Compare System</a>
+					<a href="#Certification" class="dropdownbtn">Certification</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<button class="dropdownbtn">Solar Data Analytics
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="ddcontent">
+					<a href="#Module_Lifetime_Prediction" class="dropdownbtn">Module Lifetime Prediction</a>
+					<a href="#Energy_Prediction" class="dropdownbtn">Energy Prediction</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<button class="dropdownbtn">Smart Grid Technologies
+					<i class="fa fa-caret-down"></i>
+				</button>
+			</div>
+			<div class="dropdown">
+				<button class="dropdownbtn">Solar PV University
+					<i class="fa fa-caret-down"></i>
+				</button>
+			</div>
+		</div>
+		<div class="contents">
+			<h2>How SolarPV works</h2>
+			<div style="position:relative;height:0;padding-bottom:56.21%"><iframe src="https://www.youtube.com/embed/pnAbcITCmJ0?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="641" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+			<div id="AboutSolarPV">
+				<h2>About SolarPV</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi massa dui, iaculis vitae enim eget, vulputate porta orci. Vestibulum sed libero id tortor malesuada lacinia. Duis eleifend accumsan mauris, in dapibus nulla pharetra sed. Duis eu molestie nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed neque tellus, condimentum ut ornare vel, congue at odio. Donec nunc nunc, commodo in tincidunt et, pulvinar vitae orci.
+					Sed malesuada ultrices ultrices. Proin porttitor nisi nec velit porttitor finibus. Sed felis metus, finibus eu felis vel, facilisis convallis nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris pharetra pharetra ex, eget malesuada nibh molestie vel. Nunc enim libero, maximus dapibus lorem ut, posuere tempor nulla. Integer fermentum lacus in diam facilisis, non eleifend dui luctus. Suspendisse mi tellus, finibus sit amet interdum id, dignissim vel dolor. Ut tortor libero, aliquet vel placerat eu, maximus ut lorem.
+					Phasellus tincidunt arcu et tempus viverra. Donec tempus justo eu tellus placerat rhoncus. Curabitur dapibus laoreet justo eu efficitur. Proin suscipit enim elit, vel volutpat nibh malesuada in. Suspendisse potenti. Nulla convallis laoreet mi sit amet blandit. Donec bibendum mi eu elit dapibus, sed dapibus leo placerat. Phasellus nec viverra nisi, in sodales urna. Nunc porta pretium mi, nec laoreet diam. Etiam vel justo dignissim, laoreet ipsum ut, scelerisque magna. Nullam nec interdum dolor. Donec tempus, mi eu suscipit aliquet, libero odio efficitur mi, non mollis erat massa nec libero. Praesent accumsan, urna quis lobortis euismod, eros sem sodales mi, ac congue nunc dolor a neque. Nam mollis dictum quam, sit amet auctor orci dictum ut. Vestibulum malesuada dui ut mauris eleifend pulvinar. Cras non dui a ligula suscipit venenatis.
+					Nam faucibus iaculis massa, vel scelerisque velit pulvinar non. Praesent sit amet pharetra neque. Mauris quis commodo nunc. Morbi venenatis elementum felis, sit amet semper urna convallis at. Maecenas lobortis, augue at ornare tempus, ipsum dolor interdum metus, vel consequat odio ante quis diam. Nulla vel gravida odio. Nam congue elit a urna ultrices, non tristique massa hendrerit. Maecenas fermentum dolor augue, vel facilisis velit tincidunt vel. Duis congue neque eget velit luctus blandit. Suspendisse in ante varius, aliquam elit quis, ullamcorper elit. Sed feugiat orci tellus, vel ullamcorper quam semper sit amet. Nulla sem magna, tempus vel nunc at, posuere tempor sem. Nunc fermentum odio nec orci consequat tristique.
+					Suspendisse bibendum ante eu cursus vehicula. Morbi a metus massa. In sed tortor at quam sollicitudin molestie hendrerit ut quam. Integer a risus accumsan, tincidunt nunc non, cursus erat. Sed consectetur rhoncus imperdiet. Sed tempus risus sed metus aliquet, vitae condimentum eros convallis. Praesent dictum arcu enim, sit amet luctus ipsum egestas in. Donec sit amet nibh vitae lectus accumsan viverra ut eget purus. Praesent sit amet quam ac massa sollicitudin porttitor. Vestibulum sed est sit amet elit vulputate ultrices nec sed enim. Proin ac odio vel dolor dictum hendrerit nec non erat. Integer eros elit, volutpat a sem et, facilisis sollicitudin mauris. Praesent fermentum dignissim odio quis dignissim. Vivamus iaculis est massa, nec hendrerit massa consectetur ut.
+				</p>
+			</div>
+		</div>
+		<div class="news">
+			<h2>News & Events</h2>
+			<svg width="100%" height="20";
+				<rect x="40" y="20" width="100%" height="10" style="background:linear-gradient(to right, #F7CE3E, #253d48)">
+				</rect>
+			</svg>
+			<div id="newsLinks">
+				<ul id="links">
+					<li><a href="#">PhotoVoltaic Technical Conference to take place in Marseille, France from 26 to 28 April 2017</a></li><br>
+					<li><a href="#">Trump is next US President</a></li><br>
+					<li><a href="#">Syrian forces recapture Aleppo</a></li><br>
+					<li><a href="#">Senate votes on SCOTUS nominee</a></li><br>
+				</ul>
+			</div>
+			<div id="location">
+				<h2>Geolocater<h2><br>
+				<button onclick="getLocation()">Location</button>
+				<div id="map"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<i>SolarPV</i><br>
+	<a>Address: 3279 Sycamore Fork Road, Eden Prairie, MN 55344</a>
+	<a style="margin-left:25em;">@ 2017 All Rights Reserved</a></br>
+	<a>Phone: 952-983-3945</a><br>
+	<a>SPV@gmail.com</a></br>
+	<a>solarpv.com</a></br><br>
+	<div class="pagenation">
+		<a href="#Site_Map">Site Map | </a>
+		<a href="#Terms&Conditions">Terms & Conditions | </a>
+		<a href="#Privacy Policy">Privacy Policy | </a>
+		<a href="#About_Us">About Us </a>
 	</div>
 </div>
 </body>

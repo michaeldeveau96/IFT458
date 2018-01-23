@@ -12,6 +12,12 @@ body {
 	text-align: right;
 	border: 0;
 }
+.main-container {
+	display: flex;
+}
+.container > div {
+	flex: 1;
+}
 #headerBar a{
 	padding: 10px 12px;
 }
@@ -24,6 +30,7 @@ body {
 	font-weight: bold;
 	font-family: Georgia;
 	color: #F7CE3E;
+	z-index: 1;
 }
 #phrase {
 	font-size: 14px;
@@ -31,6 +38,7 @@ body {
 	font-family: Georgia;
 	color: #F7CE3E;
 	margin-right: 50px;
+	z-index: 1;
 }
 #facebook {
 	font-size: 30px;
@@ -75,7 +83,7 @@ body {
 	float: right;
 	margin-right: 10px;
 }
-.register {
+#register {
 	border: 0;
 	background-color: #F7CE3E;
 	color: #253d48;
@@ -86,10 +94,10 @@ body {
 	font-weight: bold;
 	cursor: pointer;
 }
-.register:focus {
+#register:focus {
 	outline: 0;
 }
-.login {
+#login {
 	border: 0;
 	background-color: inherit;
 	color: #F7CE3E;
@@ -97,7 +105,7 @@ body {
 	font-weight: bold;
 	cursor: pointer;
 }
-.login:focus {
+#login:focus {
 	outline: 0;
 }
 input[type=text], input[type=password] , input[type=email], input[type=tel] {
@@ -209,16 +217,118 @@ span.psw {
 	padding-top: 60px;
 	border: 0;
 }
-#contents {
-	width: 33%;
+.sidebar {
+	overflow: hidden;
+	background-color: #0A1612;
+	font-family: inherit;
+	width: 250px;
 	height: 100%;
+	position:fixed;
+	z-index: 1;
+	margin: 0;
+}
+.sidebar a {
 	float: left;
+	font-size: 16px;
+	color:#F7CE3E;
+	text-align: left;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+.dropdown {
+	float: left;
+	overflow: hidden;
+}
+.dropdown .dropdownbtn {
+	font-size: 16px;    
+    border: none;
+    outline: none;
+    color:#F7CE3E;
+    padding: 14px 16px;
+    background-color: #0A1612;
+    font: inherit;
+    margin: 0;
+	width: 250px;
+	text-align: left;
+}
+.sidebar a:hover, .dropdown:hover .dropdownbtn {
+	background-color: #0A1612;
+	cursor: pointer;
+}
+.ddcontent {
+	display: none;
+    position: absolute;
+    background-color: #C5C1C0;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1; 
+}
+.ddcontent a:hover {
+	background-color:#C5C1C0;
+	opacity: 0.4;
+}
+.dropdown:hover .ddcontent {
+	display: block;
+}
+@media screen and (max-height: 450px) {
+	.sidebar {padding-top: 15px;}
+	.sidebar a {font-size: 18px;}
+}
+.contents {
+	width: 50%;
+	margin-left:250px;
+	position:relative;
+	height: 100%;
+	overflow: hidden;
+	float: left;
+	color: #0A1612;
+	text-align: center;
+	padding: 0px 50px;
+	border-right: 1px dashed gray;
+}
+.contents h2 {
+	text-align: center;
+}
+#AboutSolarPV {
+	
+}
+.news {
+	width:auto;
+	height: 100%;
 	position: relative;
+	overflow: hidden;
+	text-align: center;
 }
-footer {
-	height: 10%;
-	width: auto;
-	background-color: #C5C1C0;
-	margin-top: 90%;
+#links {
+	list-style-type: none;
+	text-align: left;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bolder;
+	background-color:#253d48;
+	border-radius: 3px;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 5px;
+	height: 100%;
 }
-
+a:-webkit-any-link {
+	color:#F7CE3E;
+    cursor: pointer;
+    text-decoration: none;
+}
+.footer {
+	width: 100%;
+	margin-left: 250px;
+	background-color: #253d48;
+	color: 
+}
+.footer i{
+	font-size:22px;
+	font-weight: bold;
+	color:#F7CE3E;
+}
+.footer a{
+	font-size: 14px;
+	color: #F7CE3E;
+}
