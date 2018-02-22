@@ -13,9 +13,29 @@ def main():
 		choice = raw_input('What action would you like to perform: \n1. Upload test results?\n2. Register a PV Module?\n3. Go to user registration.\n4. If you would like to quit.\nSelect a number: ')
 		if choice == '1':
 			getTestResults()
-			print getTestResults.results
+			#print getTestResults.results
+			for line in getTestResults.results:
+				if 'Baseline' in line:
+					print line.rstrip('\n')
 		elif choice == '2':
+			product = []
 			registerModule()
+			#print registerModule.mds
+			#rec=[]
+			#mds=[]
+			#for key, value in registerModule.mds.iteritems():
+			#	temp = [key,value]
+			#	rec.append(temp)
+			#print rec
+			
+			userRegister()
+			#x = []
+			#user = []
+			#for key, value in userRegister.register.iteritems():
+			#	temp = [key,value]
+			#	x.append(temp)
+			#print x
+			product.insert(Manufacturer(registerModule.mds['Manufacturer']), User(userRegister.register['First Name'], userRegister.register['Last Name'], userRegister.register['Email']), Manufacturer(registerModule.mds['Model Number'], registerModule.mds['Cell Technology'], registerModule.mds['Max System Voltage'], registerModule.mds['Pmp (W)'])) 				
 		elif choice == '3':
 			userRegister()
 		elif choice == '4':
@@ -26,7 +46,7 @@ def main():
 def getTestResults():
 	results = open('/Users/Michael/Documents/PD1/IFT458/test_results.csv', 'r')
 	#print results.read()
-	getTestResults.results = results.read()
+	getTestResults.results = results
 def registerModule():
 	mds = {}
 	manufacturer = raw_input("Manufacturer: ")
@@ -117,7 +137,7 @@ def registerModule():
 	mds['Pmp (W)'] = Pmp
 	mds['FF (%)'] = FF
 	
-	print mds
+	registerModule.mds = mds
 
 def userRegister():
 	register = {}
@@ -146,7 +166,7 @@ def userRegister():
 	register['Cell Phone Number'] = cellPhoneNo
 	register['Email'] = email
 	
-	print register
+	userRegister.register = register
 
 if __name__ == "__main__":
 	main()
