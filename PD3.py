@@ -18,8 +18,8 @@ def main():
 				if 'Baseline' in line:
 					print line.rstrip('\n')
 		elif choice == '2':
-			product = []
-			registerModule()
+			#product = []
+			#registerModule()
 			#print registerModule.mds
 			#rec=[]
 			#mds=[]
@@ -28,14 +28,16 @@ def main():
 			#	rec.append(temp)
 			#print rec
 			
-			userRegister()
+			#userRegister()
 			#x = []
 			#user = []
 			#for key, value in userRegister.register.iteritems():
 			#	temp = [key,value]
 			#	x.append(temp)
 			#print x
-			product.insert(Manufacturer(registerModule.mds['Manufacturer']), User(userRegister.register['First Name'], userRegister.register['Last Name'], userRegister.register['Email']), Manufacturer(registerModule.mds['Model Number'], registerModule.mds['Cell Technology'], registerModule.mds['Max System Voltage'], registerModule.mds['Pmp (W)'])) 				
+			#product.insert(Manufacturer(registerModule.mds['Manufacturer']), User(userRegister.register['First Name'], userRegister.register['Last Name'], userRegister.register['Email']), Manufacturer(registerModule.mds['Model Number'], registerModule.mds['Cell Technology'], registerModule.mds['Max System Voltage'], registerModule.mds['Pmp (W)'])) 				
+			n = Manufacturer(registerModule(registerModule.mds))
+			print n.name, n.registeredCountry, n.contactPerson
 		elif choice == '3':
 			userRegister()
 		elif choice == '4':
