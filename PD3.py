@@ -19,7 +19,7 @@ def main():
 					print line.rstrip('\n')
 		elif choice == '2':
 			#product = []
-			#registerModule()
+			registerModule(mds)
 			#print registerModule.mds
 			#rec=[]
 			#mds=[]
@@ -36,8 +36,9 @@ def main():
 			#	x.append(temp)
 			#print x
 			#product.insert(Manufacturer(registerModule.mds['Manufacturer']), User(userRegister.register['First Name'], userRegister.register['Last Name'], userRegister.register['Email']), Manufacturer(registerModule.mds['Model Number'], registerModule.mds['Cell Technology'], registerModule.mds['Max System Voltage'], registerModule.mds['Pmp (W)'])) 				
-			n = Manufacturer(registerModule(registerModule.mds))
-			print n.name, n.registeredCountry, n.contactPerson
+			n = Product(registerModule(mds))
+			#print n.modelNumber, n.manufacturer, n.manufacturingDate, n.length, n.width, n.weight, n.cellArea, n.cellTechnology, n.totalNumberOfCells n.numberOfCellsInSeries, n.numberOfSeriesStrings, n.numberOfBypassDiodes, n.seriesFuseRating, n.interconnectMaterial, n.interconnectSupplier, n.superstrateType, n.superStrateManufacturer, n.substrateType, n.substrateManufacturer, n.frameMaterial, n.frameAdhesive, n.encapsulantType, n.encapsulantManufacture, n.junctionBoxType, n.junctionBoxManufacturer, n.junctionBoxAdhesive, n.cableType, n.connectorType, n.maximumSystemVoltage, n.ratedVoc, n.ratedIsc, n.ratedVmp, n.ratedImp, n.ratedPmp, n.ratedFF
+			print 'hello', 'wroks'
 		elif choice == '3':
 			userRegister()
 		elif choice == '4':
@@ -49,7 +50,7 @@ def getTestResults():
 	results = open('/Users/Michael/Documents/PD1/IFT458/test_results.csv', 'r')
 	#print results.read()
 	getTestResults.results = results
-def registerModule():
+def registerModule(mds):
 	mds = {}
 	manufacturer = raw_input("Manufacturer: ")
 	location = raw_input('Location: ')
@@ -139,7 +140,6 @@ def registerModule():
 	mds['Pmp (W)'] = Pmp
 	mds['FF (%)'] = FF
 	
-	registerModule.mds = mds
 
 def userRegister():
 	register = {}
