@@ -7,50 +7,12 @@
 ####################################################################################
 import csv
 from MyClasses import Manufacturer, User, TestResults, TestLab, Product
-def main():
-	choice = 0
-	while choice != '4':
-		choice = raw_input('What action would you like to perform: \n1. Upload test results?\n2. Register a PV Module?\n3. Go to user registration.\n4. If you would like to quit.\nSelect a number: ')
-		if choice == '1':
-			getTestResults()
-			#print getTestResults.results
-			for line in getTestResults.results:
-				if 'Baseline' in line:
-					print line.rstrip('\n')
-		elif choice == '2':
-			#product = []
-			registerModule(mds)
-			#print registerModule.mds
-			#rec=[]
-			#mds=[]
-			#for key, value in registerModule.mds.iteritems():
-			#	temp = [key,value]
-			#	rec.append(temp)
-			#print rec
-			
-			#userRegister()
-			#x = []
-			#user = []
-			#for key, value in userRegister.register.iteritems():
-			#	temp = [key,value]
-			#	x.append(temp)
-			#print x
-			#product.insert(Manufacturer(registerModule.mds['Manufacturer']), User(userRegister.register['First Name'], userRegister.register['Last Name'], userRegister.register['Email']), Manufacturer(registerModule.mds['Model Number'], registerModule.mds['Cell Technology'], registerModule.mds['Max System Voltage'], registerModule.mds['Pmp (W)'])) 				
-			n = Product(registerModule(mds))
-			#print n.modelNumber, n.manufacturer, n.manufacturingDate, n.length, n.width, n.weight, n.cellArea, n.cellTechnology, n.totalNumberOfCells n.numberOfCellsInSeries, n.numberOfSeriesStrings, n.numberOfBypassDiodes, n.seriesFuseRating, n.interconnectMaterial, n.interconnectSupplier, n.superstrateType, n.superStrateManufacturer, n.substrateType, n.substrateManufacturer, n.frameMaterial, n.frameAdhesive, n.encapsulantType, n.encapsulantManufacture, n.junctionBoxType, n.junctionBoxManufacturer, n.junctionBoxAdhesive, n.cableType, n.connectorType, n.maximumSystemVoltage, n.ratedVoc, n.ratedIsc, n.ratedVmp, n.ratedImp, n.ratedPmp, n.ratedFF
-			print 'hello', 'wroks'
-		elif choice == '3':
-			userRegister()
-		elif choice == '4':
-			break
-		else:
-			print 'Invalid Selection'
 
 def getTestResults():
 	results = open('/Users/Michael/Documents/PD1/IFT458/test_results.csv', 'r')
 	#print results.read()
 	getTestResults.results = results
-def registerModule(mds):
+def registerModule():
 	mds = {}
 	manufacturer = raw_input("Manufacturer: ")
 	location = raw_input('Location: ')
@@ -76,7 +38,7 @@ def registerModule(mds):
 	interconnectDims = raw_input('Interconnect Dimensions (mm x mm): ')
 	superstrateType = raw_input('Superstrate Type: ')
 	superstrateMan = raw_input('Superstrate Manufacturer and Part #: ')
-	substrateType = raw_input('Substrate Type:' )
+	substrateType = raw_input('Substrate Type: ')
 	substrateMan = raw_input('Substrate Manufacturer and Part #: ')
 	frameType = raw_input('Frame Type/Material: ')
 	frameAdhesive = raw_input('Frame Adhesive: ')
@@ -140,7 +102,8 @@ def registerModule(mds):
 	mds['Pmp (W)'] = Pmp
 	mds['FF (%)'] = FF
 	
-
+	return mds
+	
 def userRegister():
 	register = {}
 	
@@ -168,7 +131,49 @@ def userRegister():
 	register['Cell Phone Number'] = cellPhoneNo
 	register['Email'] = email
 	
-	userRegister.register = register
+	return register
+
+def main():
+	choice = 0
+	while choice != '4':
+		choice = raw_input('What action would you like to perform: \n1. Upload test results?\n2. Register a PV Module?\n3. Go to user registration.\n4. If you would like to quit.\nSelect a number: ')
+		if choice == '1':
+			getTestResults()
+			#print getTestResults.results
+			for line in getTestResults.results:
+				if 'Baseline' in line:
+					print line.rstrip('\n')
+		elif choice == '2':
+			mds = registerModule()
+			register = userRegister()
+			#print mds
+			manufacturer = mds['Manufacturer']
+			firstName = register['First Name']
+			lastName = register['Last Name']
+			email = register['Email']
+			modelNumber = mds['Model Number']
+			cellTech = mds['Cell Technology']
+			maxSysVoltage = mds['Max System Voltage']
+			Pmp = mds['Pmp (W)']
+			
+			m = Product(mds)
+			r = User(register)
+			m.setManufacturer(manufacturer)
+			r.setFirstName(firstName)
+			r.setLastName(lastName)
+			r.setEmail(email)
+			m.setModelNumber(modelNumber)
+			m.setCellTechnology(cellTech)
+			m.setMaximumSystemVoltage(maxSysVoltage)
+			m.setRatedPmp(Pmp)
+			print ('Manufacturer: ', m.getManufacturer(), 'Contact Name: ', r.getFirstName() + ' ' + r.getLastName(), 'Contact Email: ', r.getEmail(), 'Model Number: ', m.getModelNumber(), 'Cell Technology: ', m.getCellTechnology(), 'System Voltage: ', m.getMaximumSystemVoltage(), 'Rated Power (Pmp): ', m.getRatedPmp())
+			
+		elif choice == '3':
+			userRegister()
+		elif choice == '4':
+			break
+		else:
+			print 'Invalid Selection'
 
 if __name__ == "__main__":
 	main()

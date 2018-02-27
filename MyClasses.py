@@ -40,12 +40,18 @@ class User:
 	
 	def getFirstName(self):
 		return self.firstName
+		
+	def setFirstName(self, firstName):
+		self.firstName = firstName
 	
 	def getMiddleName(self):
 		return self.middleName
 	
 	def getLastName(self):
 		return self.lastName
+		
+	def setLastName(self, lastName):
+		self.lastName = lastName
 	
 	def getAddress(self):
 		return self.address
@@ -58,6 +64,9 @@ class User:
 	
 	def getEmail(self):
 		return self.email
+		
+	def setEmail(self, email):
+		self.email = email
 
 class TestResults:
 	def __init__(self, dataSource='', product='', reportingCondition='', testSequence='', testDate='', isc='', voc='', imp='', vmp='', pmp='', ff='', noct=''):
@@ -122,8 +131,12 @@ class TestLab:
 	def getAddress(self):
 		return self.address
 	
-	def setContactPerson(self):
+	def getContantPerson(self):
+		return contactPerson
+		
+	def setContactPerson(self, firstName, lastName):
 		return User.firstName + lastName
+		
 	
 class Product:
 	def __init__(self, modelNumber='', manufacturer='', manufacturingDate='', length='', width='', weight='', cellArea='', cellTechnology='', totalNumberOfCells='',
@@ -170,8 +183,14 @@ class Product:
 	def getModelNumber(self):
 		return self.modelNumber
 	
+	def setModelNumber(self, modelNumber):
+		self.modelNumber = modelNumber
+		
 	def getManufacturer(self):
 		return self.manufacturer
+		
+	def setManufacturer(self, manufacturer):
+		self.manufacturer = manufacturer
 		
 	def getManufacturingDate(self):
 		return self.manufacturingDate
@@ -190,6 +209,9 @@ class Product:
 	
 	def getCellTechnology(self):
 		return self.cellTechnology
+		
+	def setCellTechnology(self, cellTechnology):
+		self.cellTechnology = cellTechnology
 	
 	def getTotalNumberOfCells(self):
 		return self.totalNumberOfCells
@@ -254,6 +276,9 @@ class Product:
 	def getMaximumSystemVoltage(self):
 		return self.maximumSystemVoltage
 		
+	def setMaximumSystemVoltage(self, maximumSystemVoltage):
+		self.maximumSystemVoltage = maximumSystemVoltage
+		
 	def getRatedVoc(self):
 		return self.ratedVoc
 		
@@ -268,6 +293,9 @@ class Product:
 		
 	def getRatedPmp(self):
 		return self.ratedPmp
+		
+	def setRatedPmp(self, ratedPmp):
+		self.ratedPmp = ratedPmp
 		
 	def getRatedFF(self):
 		return self.ratedFF
