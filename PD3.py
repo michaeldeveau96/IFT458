@@ -9,11 +9,14 @@ import csv
 from MyClasses import Manufacturer, User, TestResults, TestLab, Product
 
 def getTestResults():
+	#Open and read results
 	results = open('test_results.csv', 'r')
-	#print results.read()
 	getTestResults.results = results
 def registerModule():
+	#Create MDS dictionary
 	mds = {}
+	
+	#Gather user input
 	manufacturer = raw_input("Manufacturer: ")
 	location = raw_input('Location: ')
 	contact = raw_input('Contact: ')
@@ -58,6 +61,7 @@ def registerModule():
 	Pmp = input('Pmp (W): ')
 	FF = input('FF (%): ')
 	
+	#Populate dictionary
 	mds['Manufacturer'] = manufacturer
 	mds['Location'] = location
 	mds['Contact'] = contact
@@ -105,8 +109,10 @@ def registerModule():
 	return mds
 	
 def userRegister():
+	#Create register dictionary
 	register = {}
 	
+	#Gather input from user
 	username = raw_input('Username: ')
 	password = raw_input('Password: ')
 	firstName = raw_input('First Name: ')
@@ -119,6 +125,7 @@ def userRegister():
 	cellPhoneNo = input('Cell Phone Number: ')
 	email = raw_input('Email: ')
 	
+	#Populate dictionary
 	register['Username'] = username
 	register['Password'] = password
 	register['First Name'] = firstName
@@ -137,16 +144,19 @@ def main():
 	choice = 0
 	while choice != '4':
 		choice = raw_input('What action would you like to perform: \n1. Upload test results?\n2. Register a PV Module?\n3. Go to user registration.\n4. If you would like to quit.\nSelect a number: ')
+		#Choose which action the user would like to perform
 		if choice == '1':
+			#Get test results and filter line for 'Baseline' results
 			getTestResults()
-			#print getTestResults.results
 			for line in getTestResults.results:
 				if 'Baseline' in line:
 					print line.rstrip('\n')
 		elif choice == '2':
+			#Create variables for values in the dictionaries
 			mds = registerModule()
 			register = userRegister()
-			#print mds
+			
+			#Create variables for values in the dictionaries
 			manufacturer = mds['Manufacturer']
 			firstName = register['First Name']
 			lastName = register['Last Name']
@@ -156,21 +166,28 @@ def main():
 			maxSysVoltage = mds['Max System Voltage']
 			Pmp = mds['Pmp (W)']
 			
+			#Apply dictionaries to classes
 			m = Product(mds)
 			r = User(register)
+			t = TestLab(register)
 			m.setManufacturer(manufacturer)
 			r.setFirstName(firstName)
 			r.setLastName(lastName)
+			t.setContactPerson(firstName, lastName)
 			r.setEmail(email)
 			m.setModelNumber(modelNumber)
 			m.setCellTechnology(cellTech)
 			m.setMaximumSystemVoltage(maxSysVoltage)
 			m.setRatedPmp(Pmp)
-			print ('Manufacturer: ', m.getManufacturer(), 'Contact Name: ', r.getFirstName() + ' ' + r.getLastName(), 'Contact Email: ', r.getEmail(), 'Model Number: ', m.getModelNumber(), 'Cell Technology: ', m.getCellTechnology(), 'System Voltage: ', m.getMaximumSystemVoltage(), 'Rated Power (Pmp): ', m.getRatedPmp())
+			
+			#Print objects
+			print ('Manufacturer: ', m.getManufacturer(), 'Contact Name: ', r.getFirstName() + r.getLastName(), 'Contact Email: ', r.getEmail(), 'Model Number: ', m.getModelNumber(), 'Cell Technology: ', m.getCellTechnology(), 'System Voltage: ', m.getMaximumSystemVoltage(), 'Rated Power (Pmp): ', m.getRatedPmp())
 			
 		elif choice == '3':
+			#Create variables for values in the dictionary
 			register = userRegister()
-
+			
+			#Create variables for values in the dictionary
 			username = register['Username']
 			password = register['Password']
 			firstName = register['First Name']
@@ -182,13 +199,21 @@ def main():
 			officePhoneNo = register['Office Phone Number']
 			cellPhoneNo = register['Cell Phone Number']
 			email = register['Email']
-
+			
+			#Apply dictionaries to classes
 			r = User(register)
 			r.setUsername(username)
 			r.setPassword(password)
 			r.setFirstName(firstName)
 			r.setMiddleName(middleName)
-			r.set
+			r.setLastName(lastName)
+			r.setAddress(address)
+			r.setOfficePhone(officePhoneNo)
+			r.setCellPhone(cellPhoneNo)
+			r.setEmail(email)
+			
+			#Print objects
+			print ('Username: ', r.getUsername(), 'Password: ', r.getPassword(), 'First Name: ', r.getFirstName(), 'Middle Name: ', r.getMiddleName(), 'Last Name: ', r.getLastName(), 'Address: ', r.getAddress(), 'Office Phone: ', r.getOfficePhone(), 'Cell Phone: ', r.getCellPhone(), 'Email: ', r.getEmail())
 
 
 		elif choice == '4':

@@ -83,7 +83,7 @@ class User:
 	def setOfficePhone(self, officePhone):
 		self.officePhone = officePhone
 
-	def getCellphone(self):
+	def getCellPhone(self):
 		return self.cellphone
 
 	def setCellPhone(self, cellphone):
@@ -173,7 +173,7 @@ class TestResults:
 	def getFf(self):
 		return self.ff
 
-	def setFf(self, ff);
+	def setFf(self, ff):
 		self.ff = ff
 		
 	def getNoct(self):
@@ -200,11 +200,11 @@ class TestLab:
 	def setAddress(self, address):
 		self.address = address
 	
-	def getContantPerson(self):
+	def getContactPerson(self):
 		return contactPerson
 		
 	def setContactPerson(self, firstName, lastName):
-		return User.firstName + User.lastName
+		self.contactPerson = contactPerson
 		
 	
 class Product:
@@ -264,7 +264,7 @@ class Product:
 	def getManufacturingDate(self):
 		return self.manufacturingDate
 
-	def setManufacturingDate(self, manufacturingDate);
+	def setManufacturingDate(self, manufacturingDate):
 		self.manufacturingDate = manufacturingDate
 		
 	def getLength(self):
@@ -366,7 +366,7 @@ class Product:
 	def getFrameMaterial(self):
 		return self.frameMaterial
 
-	def setFrameMaterial(self, frameMaterial);
+	def setFrameMaterial(self, frameMaterial):
 		self.frameMaterial = frameMaterial
 		
 	def getFrameAdhesive(self):
