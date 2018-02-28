@@ -13,12 +13,21 @@ class Manufacturer:
 		
 	def getName(self):
 		return self.name
+
+	def setName(self, name):
+		self.name = name
 	
 	def getRegisteredCountry(self):
 		return self.registeredCountry
+
+	def setRegisteredCountry(self, registeredCountry):
+		self.registeredCountry = registeredCountry
 		
-	def getContantPerson(self):
+	def getContactPerson(self):
 		return self.contactPerson
+
+	def setContactPerson(self, contactPerson):
+		self.contactPerson = contactPerson
 	
 class User:
 	def __init__(self, username='', password='', firstName='', middleName='', lastName='', address='', officePhone='', cellphone='', email=''):
@@ -34,9 +43,15 @@ class User:
 	
 	def getUsername(self):
 		return self.username
+
+	def setUsername(self, username):
+		self.username = username
 	
 	def getPassword(self):
 		return self.password
+
+	def setPassword(self, password):
+		self.password = password
 	
 	def getFirstName(self):
 		return self.firstName
@@ -46,6 +61,9 @@ class User:
 	
 	def getMiddleName(self):
 		return self.middleName
+
+	def setMiddleName(self, middleName):
+		self.middleName = middleName
 	
 	def getLastName(self):
 		return self.lastName
@@ -55,12 +73,21 @@ class User:
 	
 	def getAddress(self):
 		return self.address
+
+	def setAddress(self, address):
+		self.address = address
 	
 	def getOfficePhone(self):
 		return self.officePhone
 	
+	def setOfficePhone(self, officePhone):
+		self.officePhone = officePhone
+
 	def getCellphone(self):
 		return self.cellphone
+
+	def setCellPhone(self, cellphone):
+		self.cellphone = cellphone
 	
 	def getEmail(self):
 		return self.email
@@ -85,39 +112,75 @@ class TestResults:
 	
 	def getDataSource(self):
 		return self.dataSource
+
+	def setDataSource(self, dataSource):
+		self.dataSource = dataSource
 	
 	def getProduct(self):
 		return self.product
+
+	def setProduct(self, product):
+		self.product = product
 		
 	def getReportingCondition(self):
 		return self.reportingCondition
+
+	def setReportingCondition(self, reportingCondition):
+		self.reportingCondition = reportingCondition
 		
 	def getTestSequence(self):
 		return self.testSequence
+
+	def setTestSequence(self, testSequence):
+		self.testSequence = testSequence
 		
 	def getTestDate(self):
 		return self.testDate
+
+	def setTestDate(self, testDate):
+		self.testDate = testDate
 	
 	def getIsc(self):
 		return self.isc
+
+	def setIsc(self, isc):
+		self.isc = isc
 		
 	def getVoc(self):
 		return self.voc
+
+	def setVoc(self, voc):
+		self.voc = voc
 		
 	def getImp(self):
 		return self.imp
+
+	def setImp(self, imp):
+		self.imp = imp
 		
 	def getVmp(self):
-		return self.vmp	
+		return self.vmp
+
+	def setVmp(self, vmp):
+		self.vmp = vmp	
 		
 	def getPmp(self):
 		return self.pmp
+
+	def setPmp(self, pmp):
+		self.pmp = pmp
 		
 	def getFf(self):
 		return self.ff
+
+	def setFf(self, ff);
+		self.ff = ff
 		
 	def getNoct(self):
 		return self.noct
+
+	def setNoct(self, noct):
+		self.noct = noct
 		
 class TestLab:
 	def __init__(self, name='', address='', contactPerson=''):
@@ -127,15 +190,21 @@ class TestLab:
 		
 	def getName(self):
 		return self.name
+
+	def setName(self, name):
+		self.name = name
 	
 	def getAddress(self):
 		return self.address
+
+	def setAddress(self, address):
+		self.address = address
 	
 	def getContantPerson(self):
 		return contactPerson
 		
 	def setContactPerson(self, firstName, lastName):
-		return User.firstName + lastName
+		return User.firstName + User.lastName
 		
 	
 class Product:
@@ -194,18 +263,33 @@ class Product:
 		
 	def getManufacturingDate(self):
 		return self.manufacturingDate
+
+	def setManufacturingDate(self, manufacturingDate);
+		self.manufacturingDate = manufacturingDate
 		
 	def getLength(self):
 		return self.length
-		
+	
+	def setLength(self, length):
+		self.length = length
+
 	def getWidth(self):
 		return self.width
+
+	def setWidth(self, width):
+		self.width = width
 		
 	def getWeight(self):
 		return self.weight
+
+	def setWeight(self, weight):
+		self.weight = weight
 		
 	def getCellArea(self):
 		return self.cellArea
+
+	def setCellArea(self, cellArea):
+		self.cellArea = cellArea
 	
 	def getCellTechnology(self):
 		return self.cellTechnology
@@ -215,63 +299,123 @@ class Product:
 	
 	def getTotalNumberOfCells(self):
 		return self.totalNumberOfCells
+
+	def setTotalNumberOfCells(self, totalNumberOfCells):
+		self.totalNumberOfCells = totalNumberOfCells
 		
 	def getNumberOfCellsInSeries(self):
 		return self.numberOfCellsInSeries
+
+	def setNumberOfCellsInSeries(self, numberOfCellsInSeries):
+		self.numberOfCellsInSeries = numberOfCellsInSeries
 		
 	def getNumberOfSeriesStrings(self):
 		return self.numberOfSeriesStrings
+
+	def setNumberOfSeriesStrings(self, numberOfSeriesStrings):
+		self.numberOfSeriesStrings = setNumberOfSeriesStrings
 		
 	def getNumberOfBypassDiodes(self):
 		return self.numberOfBypassDiodes
+
+	def setNumberOfBypassDiodes(self, numberOfBypassDiodes):
+		self.numberOfBypassDiodes = numberOfBypassDiodes
 	
 	def getSeriesFuseRating(self):
 		return self.seriesFuseRating
+
+	def setSeriesFuseRating(self, seriesFuseRating):
+		self.seriesFuseRating = seriesFuseRating
 	
 	def getInterconnectMaterial(self):
 		return self.interconnectMaterial
+
+	def setInterconnectMaterial(self, interconnectMaterial):
+		self.interconnectMaterial = interconnectMaterial
 	
 	def getInterconnectSupplier(self):
 		return self.interconnectSupplier
+
+	def setInterconnectSupplier(self, interconnectSupplier):
+		self.interconnectSupplier = interconnectSupplier
 		
 	def getSuperstrateType(self):
 		return self.superstrateType
-		
+	
+	def setSuperstrateType(self, superstrateType):
+		self.superstrateType = superstrateType	
+
 	def getSuperstrateManufacturer(self):
 		return self.superStrateManufacturer
+
+	def setSuperstrateManufacturer(self, superStrateManufacturer):
+		self.superStrateManufacturer = superStrateManufacturer
 		
 	def getSubstrateType(self):
 		return self.substrateType
+
+	def setSubstrateType(self, substrateType):
+		self.substrateType = substrateType
 		
 	def getSubstrateManufacturer(self):
 		return self.substrateManufacturer
+
+	def setSubstrateManufacturer(self, substrateManufacturer):
+		self.substrateManufacturer = substrateManufacturer
 		
 	def getFrameMaterial(self):
 		return self.frameMaterial
+
+	def setFrameMaterial(self, frameMaterial);
+		self.frameMaterial = frameMaterial
 		
 	def getFrameAdhesive(self):
 		return self.frameAdhesive
+
+	def setFrameAdhesive(self, frameAdhesive):
+		self.frameAdhesive = frameAdhesive
 		
 	def getEncapsulantType(self):
 		return self.encapsulantType
+
+	def setEncapsulantType(self, encapsulantType):
+		self.encapsulantType = encapsulantType
 		
 	def getEncapsulantManufacturer(self):
 		return self.encapsulantManufacture
+
+	def setEncapsulantManufacturer(self, encapsulantManufacture):
+		self.encapsulantManufacture = encapsulantManufacture
 		
 	def getJunctionBoxType(self):
 		return self.junctionBoxType
+
+	def setJunctionBoxType(self, junctionBoxType):
+		self.junctionBoxType = junctionBoxType
 		
 	def getJunctionBoxManufacturer(self):
 		return self.junctionBoxManufacturer
+
+	def setJunctionBoxManufacturer(self, junctionBoxManufacturer):
+		self.junctionBoxManufacturer = junctionBoxManufacturer
 		
 	def getJunctionBoxAdhesive(self):
 		return self.junctionBoxAdhesive
+
+	def setJunctionBoxAdhesive(self, junctionBoxAdhesive):
+		self.junctionBoxAdhesive = junctionBoxAdhesive
 		
 	def getCableType(self):
 		return self.cableType
+
+	def setCableType(self, cableType):
+		self.cableType = cableType
 		
 	def getConnectorType(self):
 		return self.connectorType
+
+	def setConnectorType(self, connectorType):
+		self.connectorType = connectorType
 		
 	def getMaximumSystemVoltage(self):
 		return self.maximumSystemVoltage
@@ -281,15 +425,27 @@ class Product:
 		
 	def getRatedVoc(self):
 		return self.ratedVoc
+
+	def setRatedVoc(self, ratedVoc):
+		self.ratedVoc = ratedVoc
 		
 	def getRatedIsc(self):
-		return self.RatedIsc
+		return self.ratedIsc
+
+	def setRatedIsc(self, RatedIsc):
+		self.ratedVoc = ratedVoc
 		
 	def getRatedVmp(self):
 		return self.ratedVmp
+
+	def setRatedVmp(self, ratedVmp):
+		self.ratedVmp = ratedVmp
 		
 	def getRatedImp(self):
 		return self.ratedImp
+
+	def setRatedImp(self, ratedImp):
+		self.ratedImp = ratedImp
 		
 	def getRatedPmp(self):
 		return self.ratedPmp
@@ -299,4 +455,7 @@ class Product:
 		
 	def getRatedFF(self):
 		return self.ratedFF
+
+	def setRatedFF(self, ratedFF):
+		self.ratedFF = ratedFF
 		

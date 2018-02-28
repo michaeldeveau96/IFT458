@@ -9,7 +9,7 @@ import csv
 from MyClasses import Manufacturer, User, TestResults, TestLab, Product
 
 def getTestResults():
-	results = open('/Users/Michael/Documents/PD1/IFT458/test_results.csv', 'r')
+	results = open('test_results.csv', 'r')
 	#print results.read()
 	getTestResults.results = results
 def registerModule():
@@ -169,7 +169,28 @@ def main():
 			print ('Manufacturer: ', m.getManufacturer(), 'Contact Name: ', r.getFirstName() + ' ' + r.getLastName(), 'Contact Email: ', r.getEmail(), 'Model Number: ', m.getModelNumber(), 'Cell Technology: ', m.getCellTechnology(), 'System Voltage: ', m.getMaximumSystemVoltage(), 'Rated Power (Pmp): ', m.getRatedPmp())
 			
 		elif choice == '3':
-			userRegister()
+			register = userRegister()
+
+			username = register['Username']
+			password = register['Password']
+			firstName = register['First Name']
+			middleName = register['Middle Name (optional)']
+			lastName = register['Last Name']
+			compName = register['Company Name']
+			compType = register['Company Type (Test Lab or Manufacturer)']
+			address = register['Address']
+			officePhoneNo = register['Office Phone Number']
+			cellPhoneNo = register['Cell Phone Number']
+			email = register['Email']
+
+			r = User(register)
+			r.setUsername(username)
+			r.setPassword(password)
+			r.setFirstName(firstName)
+			r.setMiddleName(middleName)
+			r.set
+
+
 		elif choice == '4':
 			break
 		else:
