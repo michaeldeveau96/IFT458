@@ -5,38 +5,123 @@
 #			Author: Michael Deveau
 #	Description: Main script for Project Deliverable 3
 ####################################################################################
-import csv
+import csv, re
+import MySQLdb
 from MyClasses import Manufacturer, User, TestResults, TestLab, Product
 
 def getTestResults():
 	#Open and read results
 	results = open('test_results.csv', 'r')
 	getTestResults.results = results
+
+def validation():
+	i = 0
+	while i != 1:
+		data = raw_input('Enter an email address, phone number (###-###-####), a number, or date. Enter 1 if you want to quit.: ')
+		if '@' in data:
+			while True:
+				try:
+					x = re.match(r'\w+@\w+.\w+', data)
+				except TypeError:
+					print ('Invalid Email Address')
+					continue
+				if x == None:
+					print ('Invalid Email Address')
+					continue
+				else:
+					print ('email')
+					break
+		if re.search('\d', data) is not None:
+			while True:
+				try:
+					x = re.match(r'\d+', data)
+				except TypeError:
+					print ('Invalid Number')
+					continue
+				if x == None:
+					print ('Invalid Number')
+					continue
+				else:
+					print ('number')
+					break
+		if '-' in data:
+			while True:
+				try:
+					x = re.match('\d{3}-\d{3}-\d{2,4}', data)
+				except TypeError:
+					print ('Invalid Phone Number')
+					continue
+				if x == None:
+					print ('Invalid Phone Number')
+					continue
+				else:
+					print ('phone')
+					break
+		if '/' in data:
+			while True:
+				try:
+					x = re.match('\d{2}/\d{2}/\d{4}', data)
+				except TypeError:
+					print ('Invalid Date')
+					continue
+				if x == None:
+					print ('Invalid Date')
+					continue
+				else:
+					print ('date')
+					break
+		else:
+			i = 1
 def registerModule():
 	#Create MDS dictionary
 	mds = {}
 	
-	#Gather user input
+	#Gather user raw_input
 	manufacturer = raw_input("Manufacturer: ")
 	location = raw_input('Location: ')
 	contact = raw_input('Contact: ')
 	address = raw_input('Address: ')
-	email = raw_input('Email: ')
-	phone = input('Phone Number: ')
-	modelNumber = raw_input('Model Number: ')
+	while True:
+		try:
+			email = raw_input('Email: ')
+			e = re.match(r'\w+@\w+.\w+', email)
+		except TypeError:
+			print ('Invalid Email Address')
+			continue
+		if e == None:
+			print ('Invalid Email Address')
+			continue
+		else:
+			print ('email')
+			break
+
+	while True:
+		try:
+			phone = raw_input('Phone Number (###-###-####): ')
+			p = re.match('\d{3}-\d{3}-\d{4}', phone)
+		except TypeError:
+			print ('Invalid Phone Number')
+			continue
+		if p == None:
+			print('Invalid Phone Number')
+			continue		
+		else:
+			print ('Phone')
+			break
+
 	moduleTotLenxWid = raw_input('Module Total Length x Width (cm x cm): ')
-	moduleWeight = input('Module Weight (kg): ')
-	indCellArea = input('Individual Cell Area (cm^2): ')
+	moduleWeight = raw_input('Module Weight (kg): ')
+	indCellArea = raw_input('Individual Cell Area (cm^2): ')
 	cellTech = raw_input('Cell Technology: ')
 	cellManufacturer = raw_input('Cell Manufacturer and part #: ')
 	cellManuLocation = raw_input('Cell Manufacturing Location : ')
-	totNumCells = input('Total Number of Cells: ')
-	numCellSeries = input('Number of cells in series: ')
-	numSeriesStrings = input('Number of series strings: ')
-	numBypassDiodes = input('Number of bypass diodes: ')
+	totNumCells = raw_input('Total Number of Cells: ')
+	numCellSeries = raw_input('Number of cells in series: ')
+	numSeriesStrings = raw_input('Number of series strings: ')
+	numBypassDiodes = raw_input('Number of bypass diodes: ')
 	bypassDiodeRating = raw_input('Bypass Diode Rating(A): ')
-	bypassDiodeMaxTemp = input('Bypass Diode Max Junction Temperature(C): ')
-	seriesFuseRating = input('Series Fuse Rating(A): ')
+	bypassDiodeMaxTemp = raw_input('Bypass Diode Max Junction Temperature(C): ')
+	seriesFuseRating = raw_input('Series Fuse Rating(A): ')
 	interconnectMatSupModNo = raw_input('Interconnect Material and Supplier Model No.: ')
 	interconnectDims = raw_input('Interconnect Dimensions (mm x mm): ')
 	superstrateType = raw_input('Superstrate Type: ')
@@ -53,13 +138,13 @@ def registerModule():
 	juncBoxAdhesive = raw_input('Junction Box Adhesive: ')
 	juncBoxUse = raw_input('Is Junction Box intended for use with Conduit: ')
 	cableConnectorType = raw_input('Cable and Connector Type: ')
-	maxSysVoltage = input('Max System Voltage: ')
-	Voc = input('Vmp (V): ')
-	Isc = input('Isc (A): ')
-	Vmp = input('Vmp (V): ')
-	Imp = input('Imp (A): ')
-	Pmp = input('Pmp (W): ')
-	FF = input('FF (%): ')
+	maxSysVoltage = raw_input('Max System Voltage: ')
+	Voc = raw_input('Vmp (V): ')
+	Isc = raw_input('Isc (A): ')
+	Vmp = raw_input('Vmp (V): ')
+	Imp = raw_input('Imp (A): ')
+	Pmp = raw_input('Pmp (W): ')
+	FF = raw_input('FF (%): ')
 	
 	#Populate dictionary
 	mds['Manufacturer'] = manufacturer
@@ -112,7 +197,7 @@ def userRegister():
 	#Create register dictionary
 	register = {}
 	
-	#Gather input from user
+	#Gather raw_input from user
 	username = raw_input('Username: ')
 	password = raw_input('Password: ')
 	firstName = raw_input('First Name: ')
@@ -121,9 +206,48 @@ def userRegister():
 	compName = raw_input('Company Name: ')
 	compType = raw_input('Company Type (Test Lab or Manufacturer): ')
 	address = raw_input('Address: ')
-	officePhoneNo = input('Office Phone Number: ')
-	cellPhoneNo = input('Cell Phone Number: ')
-	email = raw_input('Email: ')
+
+	while True:
+		try:
+			officePhoneNo = raw_input('Office Phone Number (###-###-####): ')
+			p = re.match('\d{3}-\d{3}-\d{4}', officePhoneNo)
+		except TypeError:
+			print ('Invalid Phone Number')
+			continue
+		if p == None:
+			print('Invalid Phone Number')
+			continue		
+		else:
+			print ('Phone')
+			break
+
+	while True:
+		try:
+			cellPhoneNo = raw_input('Office Phone Number (###-###-####): ')
+			p = re.match('\d{3}-\d{3}-\d{4}', cellPhoneNo)
+		except TypeError:
+			print ('Invalid Phone Number')
+			continue
+		if p == None:
+			print('Invalid Phone Number')
+			continue		
+		else:
+			print ('Phone')
+			break
+
+	while True:
+		try:
+			email = raw_input('Email: ')
+			e = re.match(r'\w+@\w+.\w+', email)
+		except TypeError:
+			print ('Invalid Email Address')
+			continue
+		if e == None:
+			print ('Invalid Email Address')
+			continue
+		else:
+			print ('email')
+			break
 	
 	#Populate dictionary
 	register['Username'] = username
@@ -142,8 +266,8 @@ def userRegister():
 
 def main():
 	choice = 0
-	while choice != '4':
-		choice = raw_input('What action would you like to perform: \n1. Upload test results?\n2. Register a PV Module?\n3. Go to user registration.\n4. If you would like to quit.\nSelect a number: ')
+	while choice != '5':
+		choice = raw_input('What action would you like to perform: \n1. Upload test results?\n2. Register a PV Module?\n3. Go to user registration.\n4. If you want to check for valid data.\n5. If you would like to quit.\nSelect a number: ')
 		#Choose which action the user would like to perform
 		if choice == '1':
 			#Get test results and filter line for 'Baseline' results
@@ -183,6 +307,10 @@ def main():
 			#Print objects
 			print ('Manufacturer: ', m.getManufacturer(), 'Contact Name: ', r.getFirstName() + r.getLastName(), 'Contact Email: ', r.getEmail(), 'Model Number: ', m.getModelNumber(), 'Cell Technology: ', m.getCellTechnology(), 'System Voltage: ', m.getMaximumSystemVoltage(), 'Rated Power (Pmp): ', m.getRatedPmp())
 			
+			mfs = MySQLdb.connect(db = 'PD2')
+			cur = mfs.cursor()
+			cur.execute('INSERT INTO manufacturer')
+			
 		elif choice == '3':
 			#Create variables for values in the dictionary
 			register = userRegister()
@@ -215,8 +343,9 @@ def main():
 			#Print objects
 			print ('Username: ', r.getUsername(), 'Password: ', r.getPassword(), 'First Name: ', r.getFirstName(), 'Middle Name: ', r.getMiddleName(), 'Last Name: ', r.getLastName(), 'Address: ', r.getAddress(), 'Office Phone: ', r.getOfficePhone(), 'Cell Phone: ', r.getCellPhone(), 'Email: ', r.getEmail())
 
-
 		elif choice == '4':
+			validation()
+		elif choice == '5':
 			break
 		else:
 			print 'Invalid Selection'
