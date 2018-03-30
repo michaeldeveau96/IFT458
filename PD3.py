@@ -266,8 +266,8 @@ def userRegister():
 
 def main():
 	choice = 0
-	while choice != '5':
-		choice = raw_input('What action would you like to perform: \n1. Upload test results?\n2. Register a PV Module?\n3. Go to user registration.\n4. If you want to check for valid data.\n5. If you would like to quit.\nSelect a number: ')
+	while choice != '6':
+		choice = raw_input('What action would you like to perform: \n1. Upload test results?\n2. Register a PV Module?\n3. Go to user registration.\n4.If you would like to view data in the database\n5. If you want to check for valid data.\n6. If you would like to quit.\nSelect a number: ')
 		#Choose which action the user would like to perform
 		if choice == '1':
 			#Get test results and filter line for 'Baseline' results
@@ -307,10 +307,17 @@ def main():
 			#Print objects
 			print ('Manufacturer: ', m.getManufacturer(), 'Contact Name: ', r.getFirstName() + r.getLastName(), 'Contact Email: ', r.getEmail(), 'Model Number: ', m.getModelNumber(), 'Cell Technology: ', m.getCellTechnology(), 'System Voltage: ', m.getMaximumSystemVoltage(), 'Rated Power (Pmp): ', m.getRatedPmp())
 			
-			mfs = MySQLdb.connect(db = 'PD2')
-			cur = mfs.cursor()
-			cur.execute('INSERT INTO manufacturer')
-			
+			mfs = MySQLdb.connect(user='root')
+			mfs.query("CREATE DATABASE PD3")
+			mfs.query("GRANT ALL ON PD3.* to ''@'localhost'")
+			mfs.commit()
+			mfs.close()
+			x = MySQLdb.connect(db = 'PD3')
+			cur = x.cursor()
+			cur.execute('CREATE TABLE mds(manufacturer varchar(20), location varchar(30), contact varchar(30), address varchar(30), email varchar(30), phone varchar(12), moduleTotLenxWid varchar(20), moduleWeight decimal(6,2) not null, indCellArea decimal(6,2) not null, cellTech varchar(20), cellManufacturer varchar(6,2), cellManuLocation varchar(30), totNumCells int not null, numCellSeries int not null, numSeriesStrings int not null, numBypassDiodes int not null, bypassDiodeRating varchar(20), bypassDiodeMaxTemp decimal(6,2) not null, seriesFuseRating decimal(6,2) not null, interconnectMatSupModNo varchar(30), interconnectDims varchar(20), superstrateType varchar(20), superstrateMan varchar(20), substrateType varchar(20), substrateMan varchar(20), frameType varchar(20), frameAdhesive varchar(20), encapsulantType varchar(20), encapsulantMan varchar(20), juncBoxType varchar(20), juncBoxMan varchar(20), juncBoxPottingMat varchar(20), juncBoxAdhesive varchar(20), juncBoxUse varchar(20), cableConnectorType varchar(20), maxSysVoltage decimal(6,2), Voc decimal(6,2), Isc decimal(6,2), Vmp decimal(6,2), Imp decimal(6,2), Pmp decimal(6,2), FF decimal(6,2)')
+			cur.execute("INSERT INTO mds VALUES(manufacturer, location, contact, address, email, phone, moduleTotLenxWid, moduleWeight, indCellArea, cellTech, cellManufacturer, cellManuLocation, totNumCells, numCellSeries, numSeriesStrings, numBypassDiodes, bypassDiodeRating, bypassDiodeMaxTemp, seriesFuseRating, interconnectMatSupModNo, interconnectDims, superstrateType, superstrateMan, substrateType, substrateMan, frameType, frameAdhesive, encapsulantType, encapsulantMan, juncBoxType, juncBoxMan, juncBoxPottingMat, juncBoxAdhesive, juncBoxUse, cableConnectorType, maxSysVoltage, Voc, Isc, Vmp, Pmp, FF)")
+			cur.commit()
+			cur.close()
 		elif choice == '3':
 			#Create variables for values in the dictionary
 			register = userRegister()
@@ -342,10 +349,23 @@ def main():
 			
 			#Print objects
 			print ('Username: ', r.getUsername(), 'Password: ', r.getPassword(), 'First Name: ', r.getFirstName(), 'Middle Name: ', r.getMiddleName(), 'Last Name: ', r.getLastName(), 'Address: ', r.getAddress(), 'Office Phone: ', r.getOfficePhone(), 'Cell Phone: ', r.getCellPhone(), 'Email: ', r.getEmail())
-
+			x = MySQLdb.connect(db = 'PD3')
+			cur = x.cursor()
+			cur.execute('CREATE TABLE register(username varchar(20), password varchar(20), firstName varchar(20), middleName varchar(20), lastName varchar(20), compName varchar(20), compType varchar(20), address varchar(30), officePhoneNo varchar(12), cellPhoneNo varchar(12), email varchar(30)')
+			cur.execute("INSERT INTO register VALUES(username, password, firstName, middleName, lastName, compName, compType, address, officePhoneNo, cellPhoneNo, email)")
+			cur.commit()
+			cur.close()
 		elif choice == '4':
-			validation()
+			x = MySQLdb.connect(db = 'PD3')
+			cur = x.cursor()
+			cur.execute('SELECT manufacturer, contact, email, cellTech, ratedPower, Isc as averageIsc, Voc as averageVoc, Pmp as averagePmax from mds')
+			cur.commit()
+			cur.close()
+			for data in cur.fetchall():
+				print '%s\t%s' % data
 		elif choice == '5':
+			validation()
+		elif choice == '6':
 			break
 		else:
 			print 'Invalid Selection'
